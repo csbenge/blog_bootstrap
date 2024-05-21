@@ -1,0 +1,19 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+    <p>
+      <%= form.label :commenter %><br>
+      <%= form.text_field :commenter, :class=> "textarea form-control border-secondary", :style => "height:5vh;", :placeholder => 'Commenter...'  %>
+    </p>
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body, :class=> "textarea form-control border-secondary", :style => "height:25vh;", :placeholder => 'Body...'  %>
+    </p>
+    <p>
+        <%= form.label :status %><br>
+        <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
+    </p>
+
+    <p>
+      <%= form.submit class: "btn btn-primary btn-sm" %>
+    </p>
+  <% end %>
+  

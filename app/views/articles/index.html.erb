@@ -1,0 +1,38 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    <div class="card" style="width: 100%;">
+      <div class="card-header">
+        <h4 class="card-title">Articles (<%= @articles.count %>)</h4>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Article</th>
+            <th scope="col">Status</th>
+            <th scope="col">Comments</th>
+            </tr>
+        </thead>
+            <ul>
+            <% @articles.each do |article| %>
+                <% unless article.archived? %>
+                <tr>
+                    <td><%= link_to article.title, article %></td>
+                    <td><%= article.status %></td>
+                    <td><%= article.comments.count %></td>
+                </tr>
+                <% end %>
+            <% end %>
+            </ul>
+        </table>
+
+        <%= link_to 'New Article', new_article_path, class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+</div>
